@@ -8,36 +8,13 @@ Kernel-Write-Interceptor is a specialized security utility designed to act as an
 🚀 Key Features
 Response Auditing: Intercepts system operation signals at the kernel level before they are committed to logs or displayed to the user.
 ![System Protection in Action](GlobalStuffonpeg.png)
+
 Note:! The script does not add noise blur or distort the responses written and displayed by your system terminal, I edited that image for security purposes.
 Active Data Obfuscation: Transform sensitive write procedures into randomized, multi-byte character strings (e.g., Japanese glyphs and symbols). This masks the true nature of the operation from unauthorized observers.
 
 Interface Decoupling: Creates a "communication buffer" between device driver layers and the Command Line Interface (CLI).
-
-Intruder Deterrence: Designed to confuse and alert. When an intruder sees obfuscated output, it signals that the system is under active protection, effectively discouraging further infiltration attempts.
-
-🛠️ How It Works
-The script functions as an "In-Line Auditor." When the operating system generates a write command or a response to an operation:
-
-Interception: The script catches the message in the "low system" layer.
-
-Analysis: It validates the source and intent of the write command.
-
-Transformation: If the operation involves sensitive device driver layers, the script replaces the output text with a randomized, unreadable character payload.
-
-Reporting: The actual system records remain protected, while the observer sees only the "stuffed" communication layer.
-
-📋 Technical Implementation
-Target Layer: Kernel-to-Userland Communication.
-
-Defense Strategy: Active Obfuscation & Log Sanitization.
-
+Intruder Deterrence: Designed to confuse and alert. When an intruder sees obfuscated output, it signals that the system is under active protection, effectively discouraging further infiltration attempts
 Language: [Insert Language, e.g., PowerShell / Python / C++]
-
-⚠️ Disclaimer
-
-This tool is To make this README section effective, it needs to be "copy-paste friendly." Since you're dealing with intercept scripts and background tasks, users will appreciate clear, step-by-step commands.
-
-Here is a draft you can drop right into your README.md.
 
 🚀 Deployment & Persistence
 This script is designed to run silently in the background and persist across system reboots. Follow the instructions below based on your requirements.
