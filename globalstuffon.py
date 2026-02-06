@@ -3,6 +3,7 @@ from bcc import BPF
 import os
 import time
 import subprocess
+import scramble_effect
 
 # --- 1. NUCLEAR RESET (Kills 'Busy' errors) ---
 def hard_reset():
@@ -22,19 +23,14 @@ int kprobe__vfs_write(struct pt_regs *ctx) {
     char comm[16];
     bpf_get_current_comm(&comm, sizeof(comm));
 
-    // Get the buffer address and length of the write
     char *buf = (char *)PT_REGS_PARM2(ctx);
     size_t count = PT_REGS_PARM3(ctx);
 
     if (count == 1) {
         char c;
-        // Read the single character being sent to the terminal
         bpf_probe_read_kernel(&c, 1, buf);
-
-        // Check if it's the 0x2A (Asterisk)
         if (c == 0x2A) {
-            // We log that we caught a password mask character!
-            bpf_trace_printk("MASK_DETECTED: Changing 0x2A to custom tag\n");
+            bpf_trace_printk("MASK_DETECTED\n");
         }
     }
     return 0;
@@ -51,12 +47,16 @@ try:
     # Initialize BPF
     b = BPF(text=shaff_global_c)
     print("\033[1;32m[+] KERNEL HOOKED. SHAF ACTIVE.\033[0m")
+   
+    # Trigger the Premium Scramble Effect on Startup
+    print("\033[1;31m[!] Unauthorized Kernel Write Detected!\033[0m")
+    scramble_effect.run_scramble_effect(duration=3) 
     
     # --- 3. THE MAIN LOOP ---
+    print("\033[1;36m[+] Monitoring for events...\033[0m")
     while True:
         # The Japanese Stuffon (Noise Layer)
         print("\033[1;35m[!] 信号ジャンボ_STUFFON_ACTIVE_0xDEADBEEF_紫のノイズ\033[0m")
-        # Ensure this next line is indented EXACTLY the same as the print above
         time.sleep(1)
 
 except Exception as e:
