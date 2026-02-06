@@ -7,7 +7,7 @@ Kernel-Write-Interceptor is a specialized security utility designed to act as an
 
 🚀 Key Features
 Response Auditing: Intercepts system operation signals at the kernel level before they are committed to logs or displayed to the user.
-![System Protection in Action](globalstufferpeg.png)
+![System Protection in Action](globalstuffonpeg.png)
 Note:! The script does not add noise blur or distort the responses written and displayed by your system terminal, I edited that image for security purposes.
 Active Data Obfuscation: Transform sensitive write procedures into randomized, multi-byte character strings (e.g., Japanese glyphs and symbols). This masks the true nature of the operation from unauthorized observers.
 
